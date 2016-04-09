@@ -1,0 +1,2172 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "微软雅黑 ragular";
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  ms-box-sizing: border-box;
+  word-break: normal;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background: #c0c0c0;
+  color: #313131;
+}
+/*竖排显示*/
+.reader-vertical-rl {
+  text-align: left;
+  float: right;
+  writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+}
+.reader-is-pc {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.reader-is-pc h1,
+.reader-is-pc h2,
+.reader-is-pc h3 {
+  font-size: 25px;
+  line-height: 38px;
+}
+.reader-is-pc .pc-mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+/**
+         * 添加新笔记
+         */
+.reader-is-pc .pc-mask .note-add-pc {
+  height: 350px;
+  width: 500px;
+  position: fixed;
+  margin: auto;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: #f9f4f1;
+  display: none;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title {
+  height: 50px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background-color: #FFFFFE;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title > div {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title .center {
+  font-size: 16px;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title .left,
+.reader-is-pc .pc-mask .note-add-pc > .title .right {
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title .left {
+  float: left;
+  margin-left: 30px;
+}
+.reader-is-pc .pc-mask .note-add-pc > .title .right {
+  float: right;
+  margin-right: 30px;
+}
+.reader-is-pc .pc-mask .note-add-pc > .content {
+  position: relative;
+}
+.reader-is-pc .pc-mask .note-add-pc > .content > .point {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: -10px;
+  left: 8px;
+  background-image: url(../image/point.png);
+  background-size: contain;
+}
+.reader-is-pc .pc-mask .note-add-pc > .content > .text {
+  padding: 10px;
+  height: 80px;
+  margin: 15px;
+  margin-bottom: 5px;
+  background-color: #FFFFFF;
+  overflow: auto;
+}
+.reader-is-pc .pc-mask .note-add-pc > .input > textarea {
+  background-color: #f9f4f1;
+  margin: 15px;
+  margin-top: 5px;
+  height: 180px;
+  width: 470px;
+}
+.reader-is-pc .pc-mask .pc-comment-submit {
+  display: none;
+  position: fixed;
+  height: 600px;
+  width: 500px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  background-color: #f9f4f1;
+  padding-bottom: 119px;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > ul {
+  max-height: 100%;
+  overflow-x: hidden;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > ul > li {
+  padding: 10px 20px;
+  font-size: 12px;
+  border-bottom: 1px solid #ECECEC;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > ul > li > .username {
+  padding: 5px 0px;
+  font-size: 14px;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > ul > li > .content {
+  padding-bottom: 5px;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > .submit {
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0px;
+  background-color: #FFF;
+  width: 100%;
+  text-align: center;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > .submit > input {
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  height: 28px;
+  width: 82%;
+}
+.reader-is-pc .pc-mask .pc-comment-submit > .submit > button {
+  border-radius: 3px;
+  border: 0px;
+  background-color: #ec6a1f;
+  height: 28px;
+  width: 40px;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit {
+  display: none;
+  position: fixed;
+  height: 600px;
+  width: 500px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  background-color: #f9f4f1;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .content {
+  width: 100%;
+  padding: 10px 20px;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .content p {
+  font-size: 13px;
+  line-height: 22px;
+  padding-bottom: 10px;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .content > textarea {
+  width: 100%;
+  height: 100px;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .submit {
+  text-align: center;
+}
+.reader-is-pc .pc-mask .pc-feedback-submit > .submit > button {
+  border-radius: 6px;
+  border: 0px;
+  background-color: #ec6a1f;
+  height: 28px;
+  width: 70%;
+  color: #FFF;
+}
+.reader-is-pc .pc-mask .pc-search {
+  display: none;
+  position: fixed;
+  height: 600px;
+  width: 500px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  background-color: #f9f4f1;
+}
+.reader-is-pc .pc-mask .pc-search > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-pc .pc-mask .pc-search > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-pc .pc-mask .pc-search > .header .search-box {
+  float: right;
+  position: relative;
+}
+.reader-is-pc .pc-mask .pc-search > .header .search-box .input {
+  margin-left: 15px;
+  height: 25.5px;
+  width: 180px;
+  vertical-align: top;
+  border: 1px solid #CFCFCF;
+  border-radius: 100px;
+  padding: 5px;
+  padding-left: 30px;
+  font-size: 12px;
+  outline: none;
+}
+.reader-is-pc .pc-mask .pc-search > .header .search-box .input:focus {
+  border-color: #003366;
+  outline: none;
+}
+.reader-is-pc .pc-mask .pc-search > .header .search-box .icon {
+  position: absolute;
+  left: 17px;
+  top: -2px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-image: url(../image/search.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.reader-is-pc .pc-mask .pc-search > .header .search-box .button {
+  height: 25.5px;
+  padding: 3px 8px;
+  margin-left: 10px;
+  vertical-align: top;
+  background-color: #FFFFFF;
+  border: 1px solid #CFCFCF;
+}
+.reader-is-pc .pc-mask .pc-search ul {
+  overflow-y: scroll;
+  height: 553px;
+  padding-bottom: 40px;
+}
+.reader-is-pc .pc-mask .pc-search ul .result {
+  margin-top: 5px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+.reader-is-pc .pc-mask .pc-search ul li {
+  font-size: 14px;
+  text-indent: 2em;
+  margin: 10px 15px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #CFCFCF;
+}
+.reader-is-pc .pc-mask .pc-search ul li .keywords {
+  background-color: #EAB783;
+}
+.position-panel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.reader-panel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+}
+/*阅读界面大小控制面板*/
+.reader-shadow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  box-shadow: 0 0 20px #999;
+  background: url(../image/wait_bg.png) no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+/*
+ * 操作界面页面部分
+ * start
+ */
+.reader-opera-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  background: none;
+}
+/*头部界面*/
+.reader-opera-content-header {
+  position: absolute;
+  width: 100%;
+  height: 47px;
+  line-height: 47px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #5a5a5a;
+  background-image: url(../image/bar.png);
+  background-size: 100% 100%;
+}
+.opera-content-header-exit {
+  width: auto;
+  height: 100%;
+  padding: 9px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.header-exit-btn {
+  width: 90px;
+  height: 30px;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+  border-radius: 5px;
+  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.9);
+  background-image: url(../image/back_to_room.png);
+  background-size: 100% 100%;
+}
+.opera-content-header-bookmark {
+  width: auto;
+  height: 100%;
+  padding: 9px 20px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.header-bookmark-btn {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.9);
+  background-image: url(../image/bookmark_no.png);
+  background-size: 100% 100%;
+}
+.opera-content-header-search {
+  position: relative;
+  width: auto;
+  height: 100%;
+  padding: 9px 20px;
+  vertical-align: bottom;
+  display: inline-block;
+  float: right;
+}
+.header-search-input {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  background: none;
+}
+.header-search-btn {
+  position: absolute;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  left: 20px;
+  top: 9px;
+  background: url(../image/search.png) no-repeat;
+  background-size: contain;
+}
+.header-search-clear-btn {
+  position: absolute;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  right: 20px;
+  top: 9px;
+  background: url(../image/clear.png) no-repeat;
+  background-size: center center;
+}
+.header-search-input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0 30px;
+  background: #fff;
+  outline: none;
+  border-radius: 90px;
+  -moz-border-radius: 90px;
+  -webkit-border-radius: 90px;
+}
+.header-search-input input:focus {
+  outline: none;
+}
+/*左边菜单栏*/
+.reader-opera-content-left {
+  position: absolute;
+  width: 37px;
+  height: auto;
+  left: 0;
+  bottom: 100px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  background: #5a5a5a;
+}
+.opera-content-left-btn {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  vertical-align: bottom;
+  background: #494949;
+}
+.opera-content-left-directory {
+  border-top-right-radius: 7px;
+  background: url(../image/directory.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-left-mark {
+  background: url(../image/mark.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-left-note {
+  background: url(../image/note.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-left-comment {
+  background: url(../image/comment.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-left-postil {
+  background: url(../image/biji.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-left-feedback {
+  border-bottom-right-radius: 7px;
+  background: url(../image/feedback.png) no-repeat;
+  background-size: 100% 100%;
+}
+/*左边目录栏*/
+.pc-left-dir-content {
+  display: none;
+  position: absolute;
+  top: 0px;
+  bottom: 47px;
+  width: 50%;
+  border-right: 1px solid #ccc;
+  background: #f9f4f1;
+}
+.pc-left-dir-content > .header {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  line-height: 50px;
+  background: #fff;
+}
+.pc-left-dir-content > .header > .each {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+.pc-left-dir-content > .header > .each:active {
+  background: #ccc;
+}
+.pc-left-dir-content > .header .bookmarkbtn {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.pc-left-dir-content > .header .notebtn {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.pc-left-dir-content > .pc-dir-content {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: #f9f4f1;
+  overflow: hidden;
+}
+.pc-left-dir-content > .pc-dir-content ul {
+  padding: 47px 10px 10px 20px;
+  height: 100%;
+  overflow-y: scroll;
+}
+.pc-left-dir-content > .pc-dir-content ul li {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  border-bottom: 1px dashed #bbb;
+}
+.pc-left-dir-content .pc-bookmark-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #f9f4f1;
+  padding: 50px 0px 0px 0px;
+  overflow: hidden;
+}
+.pc-left-dir-content .pc-bookmark-content ul {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 5px 15px;
+}
+.pc-left-dir-content .pc-bookmark-content ul li {
+  font-size: 12px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.pc-left-dir-content .pc-bookmark-content ul li > .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+.pc-left-dir-content .pc-bookmark-content ul li > .descript > p {
+  text-indent: 2em;
+}
+.pc-left-dir-content .pc-bookmark-content ul li > .date {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCCCCC;
+}
+.pc-left-dir-content .pc-bookmark-content ul li .opear {
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  height: 15px;
+}
+.pc-left-dir-content .pc-bookmark-content ul li .opear > .item {
+  display: inline-block;
+  margin-left: 10px;
+  height: 100%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.pc-left-dir-content .pc-bookmark-content ul li .opear > .goto {
+  background-image: url(../image/goto.png);
+  background-size: contain;
+}
+.pc-left-dir-content .pc-bookmark-content ul li .opear > .delete {
+  background-image: url(../image/delete.png);
+  background-size: contain;
+}
+.pc-left-dir-content .pc-note-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #f9f4f1;
+  padding: 50px 0px 0px 0px;
+  overflow: hidden;
+}
+.pc-left-dir-content .pc-note-content ul {
+  overflow-x: hidden;
+  height: 100%;
+}
+.pc-left-dir-content .pc-note-content ul li {
+  position: relative;
+}
+.pc-left-dir-content .pc-note-content ul li > .text {
+  position: relative;
+}
+.pc-left-dir-content .pc-note-content ul li > .text > .point {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: -10px;
+  left: 8px;
+  background-image: url(../image/point.png);
+  background-size: contain;
+}
+.pc-left-dir-content .pc-note-content ul li > .text > .content {
+  font-size: 14px;
+  height: 80px;
+  margin: 15px;
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  overflow: auto;
+}
+.pc-left-dir-content .pc-note-content ul li > .content {
+  font-size: 12px;
+  margin: 5px 15px;
+}
+.pc-left-dir-content .pc-note-content ul li > .date {
+  font-size: 12px;
+  margin: 5px 15px;
+  border-bottom: 1px solid #CCCCCC;
+}
+.pc-left-dir-content .pc-note-content ul li > .opear {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  height: 15px;
+}
+.pc-left-dir-content .pc-note-content ul li > .opear > .item {
+  display: inline-block;
+  height: 100%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.pc-left-dir-content .pc-note-content ul li > .opear > .goto {
+  background-image: url(../image/goto.png);
+  background-size: contain;
+}
+/*右边菜单栏*/
+.reader-opera-content-right {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  right: 0;
+  bottom: 85px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  background: #5a5a5a;
+  background-image: url(../image/font_bg.png);
+  background-size: 100% 100%;
+}
+.opera-content-right-title {
+  width: 100%;
+  height: 30px;
+  background: none;
+}
+.opera-content-right-btn-content {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  text-align: center;
+  background: #525252;
+}
+.opera-content-right-btn {
+  width: 60px;
+  vertical-align: bottom;
+  height: 30px;
+  cursor: pointer;
+  background: #e0e0e0;
+}
+.opera-content-right-btn-bottom {
+  border-bottom-left-radius: 7px;
+}
+.opera-content-right-font-plus {
+  background: url(../image/font_big.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-right-font-sub {
+  background: url(../image/font_small.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-right-epubexport {
+  background: url(../image/export.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-right-typesetting {
+  background: url(../image/hengpai.png) no-repeat;
+  background-size: 100% 100%;
+}
+.opera-content-right-indent {
+  background: url(../image/jiepai.png) no-repeat;
+  background-size: 100% 100%;
+}
+/*底部菜单栏*/
+.reader-opera-content-bottom {
+  position: absolute;
+  width: 100%;
+  height: 47px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  background: #5a5a5a;
+  background-image: url(../image/bar.png);
+  background-size: 100% 100%;
+}
+.reader-opera-content-bottom .left {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  padding-left: 80px;
+}
+.reader-opera-content-bottom .right {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+.right-brightness-content {
+  position: absolute;
+  padding: 9px;
+  width: 80px;
+  height: 100%;
+  left: 0;
+  display: inline-block;
+  text-align: center;
+}
+.content-bottom-brightness-btn {
+  width: 60px;
+  height: 30px;
+  vertical-align: text-bottom;
+  border-radius: 5px;
+  background: #e0e0e0;
+}
+.content-bottom-brightness-daylight {
+  background: #fff;
+  background-image: url(../image/daylight.png);
+  background-size: 100% 100%;
+}
+.content-bottom-brightness-night {
+  background-image: url(../image/night.png);
+  background-size: 100% 100%;
+}
+/*调节亮度面板*/
+.bottom-change-bright-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 9px;
+  padding-left: 70px;
+  padding-right: 70px;
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: left;
+}
+.bottom-change-bright-title {
+  height: 100%;
+  width: 70px;
+  left: 0;
+  position: absolute;
+  font-size: 14px;
+  top: 12px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.bottom-change-bright-bar {
+  height: 10px;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: text-bottom;
+  vertical-align: -webkit-baseline-middle;
+  border-radius: 10px;
+  background: #f4f4f4;
+}
+.change-bright-bar-copy {
+  height: 100%;
+  width: 50%;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  vertical-align: super;
+  border: 1px solid #F1F1F1;
+  background: #898989;
+}
+.change-bright-bar-btn {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  right: -11px;
+  top: -7px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 90px;
+  background: #fff;
+}
+.change-bright-bar-percent {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+/*进度面板显示*/
+.bottom-change-position-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 10px;
+  padding-left: 90px;
+  padding-right: 40px;
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: left;
+}
+.bottom-change-position-title {
+  height: 100%;
+  width: 70px;
+  left: 20px;
+  top: 12px;
+  position: absolute;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.bottom-change-position-bar {
+  height: 10px;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: text-bottom;
+  vertical-align: -webkit-baseline-middle;
+  border-radius: 10px;
+  background: #f4f4f4;
+}
+.change-position-bar-copy {
+  height: 100%;
+  width: 50%;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  vertical-align: super;
+  border: 1px solid #F1F1F1;
+  background: #898989;
+}
+.change-position-bar-btn {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  right: -5px;
+  top: -7px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 90px;
+  background: #fff;
+}
+.change-position-bar-percent {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.change-position-bar-return {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  background: url(../image/jump_yes.png) no-repeat;
+  background-size: 100% 100%;
+}
+/*书籍章节显示部分*/
+.reader-show-content-page {
+  padding: 6px 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/*章节页面显示 */
+.content-middle-page {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  padding: 47px 48px;
+  background: #ffffff;
+}
+/*章节页面显示左边页面 */
+.content-middle-page-left {
+  float: left;
+  display: inline-block;
+  border-right: 1px solid #DEDEDE;
+  box-shadow: inset -20px -10px 35px rgba(0, 0, 40, 0.2);
+  -webkit-box-shadow: inset -20px -10px 35px rgba(0, 0, 40, 0.1);
+}
+/*章节内容显示右边页*/
+.content-middle-page-right {
+  float: right;
+  display: inline-block;
+  box-shadow: inset 20px -10px 30px rgba(0, 0, 20, 0.2);
+  -webkit-box-shadow: inset 20px -10px 30px rgba(0, 0, 20, 0.1);
+}
+.middle-page-header {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 47px;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 47px;
+  padding: 0 45px;
+  left: 0;
+  top: 0;
+  right: 0;
+  color: #B6B19E;
+  text-align: center;
+}
+.middle-page-middle {
+  position: relative;
+  padding-right: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.page-middle-content-each {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 28px;
+}
+.page-middle-content-each p {
+  margin: 5px 0px;
+}
+.page-right-middle-content {
+  margin-left: 10px;
+}
+.middle-page-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 47px;
+  line-height: 47px;
+  width: 100%;
+  padding: 0 20px;
+  color: #B6B19E;
+  font-size: 14px;
+  text-align: center;
+}
+/*
+ * 手机界面
+ */
+.reader-is-phone {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.reader-is-phone h1,
+.reader-is-phone h2,
+.reader-is-phone h3 {
+  font-size: 18px;
+  line-height: 30px;
+}
+.reader-is-phone .oprea-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+}
+.reader-is-phone .note-add-phone {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin: auto;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 10;
+  background-color: #f9f4f1;
+  display: none;
+}
+.reader-is-phone .note-add-phone > .title {
+  height: 50px;
+  border-bottom: 1px solid #E0E0E0;
+  text-align: center;
+  background-color: #FFFFFE;
+}
+.reader-is-phone .note-add-phone > .title > div {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.reader-is-phone .note-add-phone > .title .center {
+  font-size: 16px;
+}
+.reader-is-phone .note-add-phone > .title .left,
+.reader-is-phone .note-add-phone > .title .right {
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #F9F4F1;
+}
+.reader-is-phone .note-add-phone > .title .left {
+  float: left;
+  margin-left: 30px;
+}
+.reader-is-phone .note-add-phone > .title .right {
+  float: right;
+  margin-right: 30px;
+}
+.reader-is-phone .note-add-phone > .content {
+  position: relative;
+}
+.reader-is-phone .note-add-phone > .content > .point {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: -10px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.reader-is-phone .note-add-phone > .content > .text {
+  height: 120px;
+  margin: 15px;
+  margin-bottom: 5px;
+  margin-top: 25px;
+  background-color: #FFFFFF;
+  overflow: auto;
+  padding: 10px 8px;
+}
+.reader-is-phone .note-add-phone > .input > textarea {
+  background-color: #f9f4f1;
+  height: 180px;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+.reader-is-phone .note-add-phone > .input > textarea:focus {
+  outline: none;
+}
+.reader-is-phone .phone-comment-submit {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: #f9f4f1;
+  padding-bottom: 105px;
+}
+.reader-is-phone .phone-comment-submit > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-phone .phone-comment-submit > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-phone .phone-comment-submit > ul {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.reader-is-phone .phone-comment-submit > ul > li {
+  padding: 10px 20px;
+  font-size: 12px;
+  border-bottom: 1px solid #ECECEC;
+}
+.reader-is-phone .phone-comment-submit > ul > li > .username {
+  padding: 5px 0px;
+  font-size: 14px;
+}
+.reader-is-phone .phone-comment-submit > ul > li > .content {
+  padding-bottom: 5px;
+}
+.reader-is-phone .phone-comment-submit > .submit {
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0px;
+  background-color: #FFF;
+  width: 100%;
+}
+.reader-is-phone .phone-comment-submit > .submit > input {
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  height: 28px;
+  width: 82%;
+}
+.reader-is-phone .phone-comment-submit > .submit > button {
+  border-radius: 3px;
+  border: 0px;
+  background-color: #ec6a1f;
+  height: 28px;
+  width: 40px;
+}
+.reader-is-phone .phone-feedback-submit {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: #f9f4f1;
+  padding-bottom: 105px;
+}
+.reader-is-phone .phone-feedback-submit > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-phone .phone-feedback-submit > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-phone .phone-feedback-submit > .content {
+  width: 100%;
+  padding: 10px 20px;
+}
+.reader-is-phone .phone-feedback-submit > .content p {
+  font-size: 13px;
+  line-height: 22px;
+  padding-bottom: 10px;
+}
+.reader-is-phone .phone-feedback-submit > .content > textarea {
+  width: 100%;
+  height: 100px;
+}
+.reader-is-phone .phone-feedback-submit > .submit {
+  text-align: center;
+}
+.reader-is-phone .phone-feedback-submit > .submit > button {
+  border-radius: 6px;
+  border: 0px;
+  background-color: #ec6a1f;
+  height: 28px;
+  width: 70%;
+  color: #FFF;
+}
+.reader-is-phone .phone-search {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: #f9f4f1;
+}
+.reader-is-phone .phone-search > .header {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #FFF;
+}
+.reader-is-phone .phone-search > .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.reader-is-phone .phone-search > .header .search-box {
+  float: right;
+  position: relative;
+}
+.reader-is-phone .phone-search > .header .search-box .input {
+  margin-left: 15px;
+  height: 25.5px;
+  width: 180px;
+  vertical-align: top;
+  border: 1px solid #CFCFCF;
+  border-radius: 100px;
+  padding: 5px;
+  padding-left: 30px;
+  font-size: 12px;
+}
+.reader-is-phone .phone-search > .header .search-box .input:focus {
+  border-color: #003366;
+  outline: none;
+}
+.reader-is-phone .phone-search > .header .search-box .icon {
+  position: absolute;
+  left: 17px;
+  top: 4px;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: url(../image/search.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.reader-is-phone .phone-search > .header .search-box .button {
+  height: 25.5px;
+  padding: 3px 8px;
+  margin-left: 10px;
+  vertical-align: top;
+  background-color: #FFFFFF;
+  border: 1px solid #CFCFCF;
+}
+.reader-is-phone .phone-search ul {
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 40px;
+}
+.reader-is-phone .phone-search ul .result {
+  margin-top: 5px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+.reader-is-phone .phone-search ul li {
+  font-size: 14px;
+  text-indent: 2em;
+  margin: 10px 15px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #CFCFCF;
+}
+.reader-is-phone .phone-search ul li .keywords {
+  background-color: #EAB783;
+}
+/*手机界面头部操作组*/
+.opera-content-phone-top {
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.content-phone-top-left {
+  display: inline-block;
+  height: 100%;
+  padding: 15px 10px;
+}
+.phone-top-left-exit {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 16px;
+  vertical-align: top;
+  cursor: pointer;
+}
+.phone-top-left-exit > img {
+  position: absolute;
+  height: 80%;
+  left: 0;
+  margin-top: 5%;
+}
+.phone-top-left-bookmark {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-image: url(../image/s_mark.png);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center center;
+}
+.content-phone-top-right {
+  display: inline-block;
+  height: 100%;
+  padding: 12px 10px;
+  float: right;
+  position: relative;
+}
+.content-phone-top-right input {
+  width: 180px;
+  height: 35px;
+  padding: 0 30px;
+  border-radius: 90px;
+  outline: none;
+  border: 1px solid #999;
+}
+.content-phone-top-right input:focus {
+  outline: none;
+  border: 1px solid #337AB7;
+}
+.content-phone-top-right .search-btn {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: url(../image/search.png) no-repeat;
+  background-size: contain;
+  margin-top: 7px;
+  margin-right: 17px;
+}
+.content-phone-top-right .clear-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  cursor: pointer;
+  background: url(../image/s_clear.png) no-repeat;
+  background-size: 20px;
+}
+/*手机界面中间内容显示区域*/
+.opera-content-phone-middle {
+  width: 100%;
+  height: 100%;
+  background: #f8f4f1;
+  padding: 40px 0px;
+  overflow: hidden;
+  color: #595757;
+}
+.opera-content-phone-middle .header {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+  line-height: 50px;
+  font-size: 11px;
+  top: 0;
+  color: #ec6a21;
+}
+.opera-content-phone-middle .header .close {
+  background-image: url(../image/goback.png);
+  background-size: contain;
+  height: 25.5px;
+  width: 14.5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.opera-content-phone-middle .middle {
+  width: auto;
+  height: 100%;
+  margin: 0 20px;
+  overflow: hidden;
+}
+.opera-content-phone-middle .middle .text-content {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 28px;
+}
+.opera-content-phone-middle .footer {
+  position: absolute;
+  width: 100%;
+  height: 36px;
+  padding-left: 20px;
+  line-height: 36px;
+  bottom: 0;
+  font-size: 12px;
+}
+/*手机界面底部操作栏*/
+.opera-content-phone-bottom {
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #bbb;
+}
+.content-phone-bottom-each {
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  line-height: 60px;
+  text-align: center;
+  background: #fff;
+}
+.phone-bottom-each-dir {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 19px;
+  background: url(../image/s_dir.png);
+  background-size: 100% 100%;
+}
+.phone-bottom-each-process {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background: url(../image/s_process.png);
+  background-size: 100% 100%;
+}
+.phone-bottom-each-night {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 17px;
+  background: url(../image/s_daylight.png);
+  background-size: 100% 100%;
+}
+.phone-bottom-each-font {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 17px;
+  background: url(../image/s_font.png);
+  background-size: 100% 100%;
+}
+.phone-dir-padding-left {
+  margin-left: 70%;
+}
+.phone-bottom-each-more {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 19px;
+  background: url(../image/s_more.png);
+  background-size: 100% 100%;
+}
+.phone-bottom-dir-content {
+  display: none;
+  width: 70%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  background: #f9f4f1;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  border-right: 1px solid #bbb;
+}
+.phone-bottom-dir-content .header-dir {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 20px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-bottom: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+}
+.phone-bottom-dir-content .header-dir > .header-dir-ul {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.phone-bottom-dir-content .header-dir > .header-dir-ul > li {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 20%;
+  height: 90%;
+  text-align: center;
+  font-size: 12px;
+}
+.phone-bottom-dir-content .header-dir > .header-dir-ul > li.current {
+  border-bottom: 2px solid #ec6a21;
+}
+.phone-bottom-dir-content .phone-chapter-content {
+  width: 100%;
+  overflow: hidden;
+}
+.phone-bottom-dir-content .phone-chapter-content ul {
+  padding: 60px 15px 30px 20px;
+}
+.phone-bottom-dir-content .phone-chapter-content ul li {
+  height: 35px;
+  line-height: 35px;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid #bbb;
+  overflow: hidden;
+  font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.phone-bottom-dir-content .phone-bookmark-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #f9f4f1;
+  padding: 50px 0px 0px 0px;
+  overflow: hidden;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 5px 15px;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li {
+  font-size: 12px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li > .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li > .descript > p {
+  text-indent: 2em;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li > .date {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCCCCC;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li .opear {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  height: 15px;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li .opear > .item {
+  display: inline-block;
+  margin-left: 10px;
+  height: 100%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li .opear > .goto {
+  background-image: url(../image/goto.png);
+  background-size: contain;
+}
+.phone-bottom-dir-content .phone-bookmark-content ul li .opear > .delete {
+  background-image: url(../image/delete.png);
+  background-size: contain;
+}
+.phone-bottom-dir-content .phone-note-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #f9f4f1;
+  padding: 50px 0px 0px 0px;
+  overflow: hidden;
+}
+.phone-bottom-dir-content .phone-note-content ul {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+}
+.phone-bottom-dir-content .phone-note-content ul li {
+  position: relative;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .text {
+  position: relative;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .text > .point {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: -10px;
+  left: 8px;
+  background-image: url(../image/point.png);
+  background-size: contain;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .text > .content {
+  font-size: 14px;
+  height: 80px;
+  margin: 15px;
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  overflow: auto;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .content {
+  font-size: 12px;
+  margin: 5px 15px;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .date {
+  font-size: 12px;
+  margin: 5px 15px;
+  border-bottom: 1px solid #CCCCCC;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .opear {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  height: 15px;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .opear > .item {
+  display: inline-block;
+  height: 100%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.phone-bottom-dir-content .phone-note-content ul li > .opear > .goto {
+  background-image: url(../image/goto.png);
+  background-size: contain;
+}
+.phone-bottom-process-content {
+  display: none;
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  bottom: 59px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #bbb;
+}
+.phone-bottom-process-content .bar-content {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  line-height: 60px;
+  padding: 0 70px 0 90px;
+}
+.phone-bottom-process-content .bar-content .text {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  left: 20px;
+  font-size: 15px;
+}
+.phone-bottom-process-content .bar-content .percent-text {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  right: 20px;
+}
+.phone-bottom-process-content .bar-content .progress-bar {
+  width: 100%;
+  height: 3px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background: #9f9f9f;
+  position: relative;
+  top: 28px;
+}
+.phone-bottom-process-content .bar-content .progress-bar .percent {
+  width: 20%;
+  height: 100%;
+  border: none;
+  position: relative;
+  border-radius: inherit;
+  background: #ec6a21;
+  border-radius: 3px;
+}
+.phone-bottom-process-content .bar-content .progress-bar .percent .btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: -12px;
+  top: -10px;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 16px;
+}
+.phone-bottom-process-content .info-cotent {
+  width: 100%;
+  height: 50%;
+  line-height: 60px;
+  padding: 0 40px;
+  position: relative;
+}
+.phone-bottom-process-content .info-cotent .pre-chapter {
+  position: absolute;
+  left: 20px;
+  width: 20px;
+  height: 100%;
+  cursor: pointer;
+  background: url(../image/s_pre.png) no-repeat;
+  background-size: 14px;
+  background-position: center center;
+}
+.phone-bottom-process-content .info-cotent .next-chapter {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 100%;
+  cursor: pointer;
+  background: url(../image/s_next.png) no-repeat;
+  background-size: 14px;
+  background-position: center center;
+}
+.phone-bottom-process-content .info-cotent .current-chapter {
+  position: relative;
+  text-align: center;
+  font-size: 12px;
+}
+.phone-bottom-night-content {
+  display: none;
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  bottom: 59px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #bbb;
+}
+.phone-bottom-night-content .bar-content {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  line-height: 60px;
+  padding: 0 70px 0 90px;
+}
+.phone-bottom-night-content .bar-content .text {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  left: 20px;
+  font-size: 15px;
+}
+.phone-bottom-night-content .bar-content .percent-text {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  right: 20px;
+}
+.phone-bottom-night-content .bar-content .progress-bar {
+  width: 100%;
+  height: 3px;
+  border: none;
+  border-radius: 3px;
+  background: #9f9f9f;
+  position: relative;
+  top: 28px;
+}
+.phone-bottom-night-content .bar-content .progress-bar .percent {
+  width: 20%;
+  height: 100%;
+  border: none;
+  position: relative;
+  border-radius: inherit;
+  background: #ec6a21;
+  border-radius: 3px;
+}
+.phone-bottom-night-content .bar-content .progress-bar .percent .btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: -12px;
+  top: -10px;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 16px;
+}
+.phone-bottom-night-content .model-cotent {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  line-height: 60px;
+  padding: 0 16px;
+}
+.phone-bottom-night-content .model-cotent .each {
+  display: inline-block;
+  float: left;
+  width: 33.33%;
+  height: 100%;
+  padding: 15px 0px;
+}
+.phone-bottom-night-content .model-cotent .each div {
+  height: 30px;
+  max-width: 180px;
+}
+.phone-bottom-night-content .model-cotent .green {
+  background: lightgreen;
+}
+.phone-bottom-night-content .model-cotent .brown {
+  background: #F3F3CB;
+}
+.phone-bottom-night-content .model-cotent .toggle-light {
+  background: #5A5A5A;
+  background-image: url(../image/s_night.png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center center;
+}
+.phone-bottom-night-content .model-cotent .day {
+  border: 1px solid #ec6a21;
+  background: #FFFFFF;
+}
+.phone-bottom-night-content .model-cotent .night {
+  background: #090C13;
+}
+.phone-bottom-font-content {
+  display: none;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 59px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #bbb;
+}
+.phone-bottom-font-content .font-each {
+  width: 25%;
+  display: inline-block;
+  float: left;
+  padding: 15px 10px;
+}
+.phone-bottom-font-content .font-each div {
+  width: 98%;
+  height: 100%;
+  cursor: pointer;
+  vertical-align: text-bottom;
+  line-height: 30px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  font-size: 14px;
+  text-align: center;
+}
+.phone-bottom-font-content .rows {
+  background: url(../image/s_rows.png) no-repeat;
+  background-size: 20px;
+  background-position: center center;
+}
+.phone-bottom-font-content .vertical {
+  background: url(../image/s_vertical.png) no-repeat;
+  background-size: 20px;
+  background-position: center center;
+}
+.phone-bottom-more-content {
+  display: none;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 59px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #bbb;
+}
+.phone-bottom-more-content .more-each {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  padding: 15px 10px;
+}
+.phone-bottom-more-content .more-each div {
+  width: 98%;
+  height: 100%;
+  cursor: pointer;
+  line-height: 30px;
+  vertical-align: text-bottom;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .reader-is-phone {
+    display: block;
+  }
+  .reader-is-pc {
+    display: none;
+  }
+  /*头部*/
+  .reader-opera-content-header {
+    height: 40px;
+    line-height: 40px;
+  }
+  .opera-content-header-exit {
+    padding: 7px;
+  }
+  .header-exit-btn {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+  }
+  .opera-content-header-bookmark {
+    padding: 7px;
+  }
+  .header-bookmark-btn {
+    width: 50px;
+    height: 25px;
+  }
+  .opera-content-header-search {
+    padding: 5px 7px;
+  }
+  .header-search-input {
+    width: 180px;
+  }
+  .header-search-btn {
+    left: 7px;
+    top: 5px;
+  }
+  .header-search-clear-btn {
+    top: 5px;
+    right: 7px;
+  }
+  /*底部*/
+  .content-middle-page-left {
+    width: 100%;
+    border-right: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background: #f8f4f1;
+  }
+  .content-middle-page-right {
+    display: none;
+  }
+  .reader-show-content-page {
+    padding: 0px;
+  }
+  .reader-opera-content-bottom {
+    height: 70px;
+  }
+  .reader-opera-content-bottom .left {
+    width: 100%;
+    height: 50%;
+    padding-left: 70px;
+  }
+  .reader-opera-content-bottom .right {
+    width: 100%;
+    height: 50%;
+  }
+  .content-bottom-brightness-btn {
+    width: 50px;
+    height: 25px;
+  }
+  .right-brightness-content {
+    padding: 5px 10px;
+    width: 70px;
+  }
+  .bottom-change-bright-title {
+    top: 8px;
+  }
+  /*中间阅读界面*/
+  .middle-page-middle {
+    padding-right: 0px;
+  }
+}
+@media only screen and (max-width: 900px) {
+}
+.countPage-iframe {
+  position: absolute;
+  left: -999%;
+  top: -999%;
+}
+/*页面加载时的遮罩*/
+.mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.mask > .img {
+  background-image: url(../image/loading.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 54px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  margin-top: -27px;
+  left: 50%;
+  margin-left: -25px;
+}
+/* add by gonglong-20160306 start */
+p {
+  text-indent: 2em;
+}
+span.txt-indent {
+  width: 2em;
+  display: inline-block;
+}
+/* add by gonglong-20160306 end */
+/* add by gonglong --弹出框 插件 - start */
+.dialog-plugin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.dialog-plugin .main {
+  position: relative;
+  top: 20%;
+  width: 80%;
+  max-width: 500px;
+  height: 30%;
+  margin: 0 auto;
+  color: #FFFFFF;
+  background: #383838;
+  border-radius: .5em;
+  overflow: hidden;
+}
+.dialog-plugin .main p {
+  position: relative;
+  height: 70%;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-indent: 0;
+}
+.dialog-plugin .main .btn {
+  position: relative;
+  height: 20%;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2em;
+  background: #616161;
+  border-radius: .3em;
+}
+.dialog-plugin .main .btn:active {
+  background: #5A5858;
+}
+.normal .main .btn {
+  line-height: 2.5em;
+}
+/* add by gonglong --弹出框 插件 - end */
+/* 手机 夜间模式--正文 */
+.phone-cont-night {
+  color: #374349;
+  background: #090c13;
+}
+.phone-cont-night .header {
+  color: #374349;
+}
+/* 手机 夜间模式--操作面板 */
+.phone-opera-night {
+  color: #9fa0a0;
+  border-top: 1px solid #1f2126;
+  background: #1f2126;
+}
+.phone-opera-night .content-phone-bottom-each {
+  background: #1f2126;
+}
+/* 手机 夜间模式--目录*/
+.phone-dir-night {
+  border-right: 1px solid #000000;
+  background: #000000;
+}
+.phone-dir-night .header-dir {
+  color: #9f9f9f;
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  background: #1f2126;
+}
+.phone-dir-night .phone-chapter-content {
+  color: #595757;
+  background: #181818;
+}
+.phone-dir-night .phone-chapter-content ul li {
+  border-bottom: 1px solid #000000;
+}
+.phone-dir-night .phone-note-content {
+  color: #595757;
+  background: #181818;
+}
+.phone-dir-night .phone-note-content ul li {
+  border-bottom: 1px solid #000000;
+}
+.phone-dir-night .phone-bookmark-content {
+  color: #595757;
+  background: #181818;
+}
+.phone-dir-night .phone-bookmark-content ul li {
+  border-bottom: 1px solid #000000;
+}
+/* 手机 夜间模式--搜索*/
+.reader-is-phone .phone-search-night {
+  background-color: #090c13;
+}
+.reader-is-phone .phone-search-night .header {
+  background: #1f2126;
+  border-bottom: 1px solid #1f2126;
+}
+.reader-is-phone .phone-search-night ul {
+  color: #374349;
+}
+.reader-is-phone .phone-search-night ul li {
+  border-bottom: 1px solid #000000;
+}
+table {
+  border: 1px solid #716F6F;
+}
+table p {
+  text-indent: 0;
+}
+table tbody tr td span {
+  white-space: nowrap;
+}
+/*# sourceMappingURL=reader.css.map */

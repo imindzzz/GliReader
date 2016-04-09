@@ -1,0 +1,52 @@
+.contentmenu{
+    border: 1px solid;
+    display: none;
+    position: absolute;
+    top:300px;
+    left:200px;
+    background-color: rgb(249,234,208);
+    border-radius: 3px;
+    >.item{
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        width: 80px;
+        text-align: center;
+        cursor: pointer;
+        border-right: 1px solid #CCCCCC;
+        border-radius: 3px;
+        &:last-child{
+            border-right: 0px solid #CCCCCC;
+        }
+    }
+}
+.note-mark{
+//  color: #EB6A1F !important;
+    position: relative;
+    border-bottom: 1px solid #9B410E;
+    .circle{
+        position: absolute;
+        cursor: pointer;
+        bottom: -9px;
+        right: -18px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: inline-block;
+//      border: 1px solid red;
+        background-image: url(../image/circle.png);
+        background-size: contain;
+    }
+}
+.reader-vertical-rl{
+    .note-mark{
+        border-bottom: 0;
+        border-left: 1px solid #9B410E;
+        .circle{
+            bottom: -12px;
+            right: inherit;
+            left: -17px;
+        }
+    }
+}

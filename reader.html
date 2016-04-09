@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">     
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="*" http-equiv="Access-Control-Allow-Origin">
+        <meta content="IE=Edge,CHROME=1" http-equiv="X-UA-Compatible" />
+        <meta content="telephone=no,email=no,adress=no" name="format-detection">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    	<meta http-equiv="cache-control" content="max-age=0" />
+		<title>阅读器</title>
+		<link rel="stylesheet" href="css/reader.css" />
+		<!--<script type="text/javascript" src="..public/js/jquery-1.11.3.min.js" ></script>-->
+	</head>
+	<body style="overflow: hidden;">
+    
+    <!-- 在 标签 上设置 width, height; -->
+		<div class="reader-panel-content">
+			<div class="reader-is-pc">	
+				<div class="position-panel">
+					<!--界面阴影加调节界面大小-->
+					<div class="reader-shadow">
+						<!---------------------------------- 页面内容操作界面 ------------------------------------------>
+						<div class="reader-opera-content" onmouseup="close_opera_content(event,this)">
+							<div class="header-is-pc">
+								<div class="reader-opera-content-header">
+									<div class="opera-content-header-exit">
+										<div class="header-exit-btn" onmouseup="exit_reader(event)"></div>
+									</div>
+									<div class="opera-content-header-bookmark">
+										<div class="header-bookmark-btn" onmouseup="Bookmark.addBookmark(event);"></div>
+									</div>
+									<div class="opera-content-header-search" onmouseup="toggle_search('show',event)">
+										<div class="header-search-input">
+											<span class="header-search-btn"></span>
+											<!--<span class="header-search-clear-btn" onmouseup="reader_clear_search()"></span>-->
+											<!--<input type="text" placeholder="输入关键字" />-->
+										</div>
+									</div>
+								</div>
+								<div class="reader-opera-content-left" >
+									<div class="opera-content-left-btn opera-content-left-directory" onmouseup="toggle_pc_dir_content('toggle',event,this,1)" title="目录"></div>
+									<div class="opera-content-left-btn opera-content-left-note" onmouseup="toggle_pc_dir_content('toggle',event,this,2)"     title="笔记"></div>
+									<div class="opera-content-left-btn opera-content-left-mark" onmouseup="toggle_pc_dir_content('toggle',event,this,3)"     title="书签"></div>
+									<div class="opera-content-left-btn opera-content-left-comment" onmouseup="toggle_comments('show')"  title="评论"></div>
+									<div class="opera-content-left-btn opera-content-left-feedback"  onmouseup="toggle_feedback('show');" title="反馈"></div>
+									
+
+								</div>
+                                
+                                    <!--pc端目录/笔记/书签面板-->
+									<div class="pc-left-dir-content" onmouseup="stopPropagation(event);">
+										<div class="header" onmouseup="toggle_panle(this,event);">
+											<div class="each dirbtn">目录</div>
+											<div class="each notebtn">笔记</div>
+											<div class="each bookmarkbtn">书签</div>
+										</div>
+										<div id="pc-dir-content" class="pc-dir-content">
+											<ul></ul>
+										</div>
+										<div id="pc-note-content" class="pc-note-content">
+										    <ul></ul>
+										</div>
+										<div id="pc-bookmark-content" class="pc-bookmark-content">
+											<ul>3</ul>
+										</div>
+									</div>
+                                    
+								<div class="reader-opera-content-right" >
+									<div class="opera-content-right-title"></div>
+									<div class="opera-content-right-btn-content">
+										<div class="opera-content-right-btn opera-content-right-font-plus" onmouseup="reader_fontsize_plugs(event,this)"></div>
+									</div>
+									<div class="opera-content-right-btn-content">
+										<div class="opera-content-right-btn opera-content-right-font-sub" onmouseup="reader_fontsize_sub(event,this)"></div>
+									</div>
+									<div class="opera-content-right-btn-content">
+										<div class="opera-content-right-btn  opera-content-right-epubexport"></div>
+									</div>
+									<div class="opera-content-right-btn-content">
+										<div status="vertical" class="opera-content-right-btn opera-content-right-typesetting" onmouseup="reader_change_typesetting('toggle',event,this)"></div>
+									</div>
+									<div class="opera-content-right-btn-content opera-content-right-btn-bottom">
+										<div class="opera-content-right-btn  opera-content-right-indent" onmouseup="reader_change_indent(this)"></div>
+									</div>
+								</div>
+								<div class="reader-opera-content-bottom">
+									<div class="left">
+										<div class="right-brightness-content">
+											<div class="content-bottom-brightness-btn content-bottom-brightness-daylight" onmouseup="toggle_bright(this,event);"></div>
+										</div>
+										<div class="bottom-change-bright-content">
+											<label class="bottom-change-bright-title">调节亮度:</label>
+											<div class="bottom-change-bright-bar" onmouseup="reader_change_bright(event,this,true)">
+												<div class="change-bright-bar-copy">
+													<div class="change-bright-bar-btn"></div>
+												</div>
+											</div>
+											<label class="change-bright-bar-percent">50%</label>
+										</div>
+									</div>
+									<div class="right">
+										<div class="bottom-change-position-content">
+											<label class="bottom-change-position-title">快速跳转:</label>
+											<div class="bottom-change-position-bar" onmouseup="reader_change_process(event)">
+												<div class="change-position-bar-copy">
+													<div class="change-position-bar-btn"></div>
+												</div>
+											</div>
+											<span class="change-position-bar-return"></span>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!----------------------------------- 章节内容显示   pc端两页 ----------------------------------->
+						<div id="reader-content" class="reader-show-content-page" onmouseup="show_opera_content(event,this)">
+							<div class="content-middle-page content-middle-page-left">
+								<!--章节名字显示-->
+								<div class="middle-page-header">
+									<div class="page-left-header-content"></div>
+								</div>
+								<!--章节内容显示-->
+								<div id="pc-text-show-content" class="middle-page-middle" style="padding-right: 9px;">
+									<div class="page-middle-content-each page-left-middle-content "></div>
+								</div>
+								<!--章节页码显示-->
+								<div class="middle-page-footer">
+									<div class="page-left-footer-content"></div>
+								</div>
+							</div>
+							<div class="content-middle-page content-middle-page-right">
+								<!--章节名字显示-->
+								<div class="middle-page-header">
+									<div class="page-left-header-content"></div>
+								</div>
+								<!--章节内容显示-->
+								<div class="middle-page-middle">
+									<div class="page-middle-content-each page-right-middle-content"></div>
+								</div>
+								<!--章节页码显示-->
+								<div class="middle-page-footer">
+									<div class="page-left-footer-content"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pc-mask">
+					<!--pc添加笔记-->
+					<div class="note-add-pc">
+						<div class="title">
+							<div class="left btn">取消</div>
+							<div class="center">笔记</div>
+							<div class="right btn">完成</div>
+						</div>
+						<div class="content">
+							<div class="point"></div>
+							<div class="text">
+								<p></p>
+							</div>
+						</div>
+						<div class="input">
+							<textarea name="" rows="" cols="64" style="resize: none;"></textarea>
+						</div>
+					</div>
+					<!--pc添加评论-->
+					<div class="pc-comment-submit">
+						<div class="header" onmouseup="toggle_comments();">
+							<span class="close"></span>
+							<span>评论</span>
+						</div>
+						<ul></ul>
+						<div class="submit">
+							<input type="text"/>
+							<button type="button" onmouseup="comment_submit(this,event);">提交</button>
+						</div>
+					</div>
+					<!--pc添加反馈-->
+					<div class="pc-feedback-submit">
+						<div class="header" onmouseup="toggle_feedback()">
+							<span class="close"></span>
+							<span>反馈</span>
+						</div>
+						<div class="content">
+							<p>精灵用户倾听您的建议,如果您在使用产品时遇到问题和功能障碍,或者产品相关意见建议,欢迎反馈!</p>
+							<textarea></textarea>
+						</div>
+						<div class="submit">
+							<button type="button" onmouseup="feedback_submit(this,event);">提交</button>
+						</div>
+					</div>
+					<!--pc搜索-->
+					<div class="pc-search">
+						<div class="header" >
+							<span class="close" onmouseup="toggle_search();"></span>
+							<div class="search-box">
+								<span class="icon"></span>
+								<input type="text" class="input" placeholder="请输入搜索关键字"/>
+								<button type="button" class="button" onmouseup="search_submit(this,event);">搜索</button>
+							</div>
+						</div>
+						<ul onmouseup = "search_goto(event);"></ul>
+					</div>
+				</div>
+			</div>
+			<!------------------------------------------- 手机界面  ---------------------------------->
+			<div class="reader-is-phone">
+				<div id="phone-oprea-panel" class="oprea-panel">
+					<div id="opera_phone_top" class="opera-content-phone-top">
+						<div class="content-phone-top-left">
+							<div class="phone-top-left-exit" onmouseup="exit_reader()">
+                            <img src="./image/goback.png"/>
+                            </div>
+							
+						</div>
+						<div class="content-phone-top-right">
+							<span class="search-btn" ontouchend="toggle_search('show',event);"></span>
+							<div id="phone_bookmart" class="phone-top-left-bookmark" onmouseup="Bookmark.addBookmark(event, this);"></div>
+							
+							<!--<span class="clear-btn" onmouseup="reader_clear_search()"></span>
+							<input type="text" placeholder="输入搜索关键字" />-->
+						</div>
+					</div>
+					<div id="opera_phone_bottom" class="opera-content-phone-bottom">                             
+						<!-------------------------------------------------- 手机的底部菜单   ---------------------------------------------------->
+						<div style="width: 100%;height: 100%;position: relative;">
+							<div class="content-phone-bottom-each" onmouseup="reader_phone_show_panel(this,'url(image/s_dir_active.png)','phone-bottom-dir-content')"><div class="phone-bottom-each-dir"></div></div>
+							<div class="content-phone-bottom-each" onmouseup="reader_phone_show_panel(this,'url(image/s_process_active.png)','phone-bottom-process-content')"><div class="phone-bottom-each-process"></div></div>
+							<div class="content-phone-bottom-each" onmouseup="reader_phone_show_panel(this,'url(image/s_daylight_active.png)','phone-bottom-night-content')"><div class="phone-bottom-each-night"></div></div>
+							<div class="content-phone-bottom-each" onmouseup="reader_phone_show_panel(this,'url(image/s_font_active.png)','phone-bottom-font-content')"><div class="phone-bottom-each-font"></div></div>
+							<div class="content-phone-bottom-each" onmouseup="reader_phone_show_panel(this,'url(image/s_more_active.png)','phone-bottom-more-content')"><div class="phone-bottom-each-more"></div></div>
+						</div>
+						<!-------------------------------------------------- 手机的底部菜单 面板  ------------------------------------------------>
+						<!--跳转阅读面板-->
+						<div id="ph_btm_process" class="phone-bottom-process-content">
+							<div class="bar-content">
+							    <div class="text">阅读进度:</div>
+							    <div id="phone-change-progress-text" class="percent-text">30%</div>
+								<div id="phone-change-progress-bar" class="progress-bar" onmouseup="reader_change_process(event)">
+									<div class="percent">
+										<div id="phone-change-progress-btn" class="btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="info-cotent">
+								<div class="pre-chapter" onmouseup="reader_page_pre()"></div>
+								<div class="next-chapter" onmouseup="reader_page_next()"></div>
+								<div class="current-chapter"></div>
+							</div>
+						</div>
+						<!--黑夜/白天模式面板-->
+						<div id="ph_btm_night" class="phone-bottom-night-content">
+							<div class="bar-content">
+							    <div class="text">调整亮度:</div>
+							    <div id="phone-change-bright-text" class="percent-text">100%</div>
+								<div id="phone-change-bright-bar" class="progress-bar" onmouseup="reader_change_bright(event,this,true)">
+									<div class="percent">
+										<div id="phone-change-bright-btn" class="btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="model-cotent">
+								<div class="each">
+									<div id="day_modal" class="day"></div>
+								</div>
+								<div class="each" style="visibility: hidden;"></div>
+								<div class="each">
+									<div id="night_modal" class="night"></div>
+								</div>
+							</div>
+						</div>
+						<!--排版和字体设置面板-->
+						<div id="ph_btm_font" class="phone-bottom-font-content">
+							<div class="font-each">
+								<div class="plugs" onmouseup="reader_fontsize_plugs()">A+</div>
+							</div>
+							<div class="font-each">
+								<div class="sub" onmouseup="reader_fontsize_sub()">A-</div>
+							</div>
+							<div class="font-each">
+								<div id="phone-change-type-v" class="vertical" onmouseup="reader_change_typesetting('toggle',event,this)">&nbsp;</div>
+							</div>
+							<div class="font-each">
+								<div id="phone-change-typesetting" class="rows" onmouseup="reader_change_typesetting('toggle',event,this)">&nbsp;</div>
+							</div>
+						</div>
+						<!--更多操作面板-->
+						<div id="ph_btm_more" class="phone-bottom-more-content">
+							<!--<div class="more-each">
+								<div class="bookmark">书签</div>
+							</div>
+							<div class="more-each">
+								<div class="positl">批注</div>
+							</div>-->
+							<div class="more-each" ontouchend = "toggle_comments('show');reader_toggle_phone_opera(event,'close');">
+								<div class="note">评论</div>
+							</div>
+							<div class="more-each" ontouchend = "toggle_feedback('show');reader_toggle_phone_opera(event,'close');">
+								<div class="feedback">反馈</div>
+							</div>
+						</div>
+					</div>
+					<!--章节目录面板-->
+					<div id="ph_dir_panel" class="phone-bottom-dir-content">
+						<div class="header-dir">
+							<ul class="header-dir-ul" ontouchend="toggle_panle( this,event );">
+								<li class="current">目录</li>
+								<li>笔记</li>
+								<li>书签</li>
+							</ul>
+						</div>
+						<div id="phone-dir-content" class="phone-chapter-content"><ul></ul></div>
+						<div id="phone-note-content" class="phone-note-content"><ul></ul></div>
+						<div id="phone-bookmark-content" class="phone-bookmark-content"><ul></ul></div>
+					</div>
+			    </div>
+			    <!--手机添加标签页-->
+			    <div class="note-add-phone">
+					<div class="title">
+						<div class="left btn">取消</div>
+						<div class="center">笔记</div>
+						<div class="right btn">完成</div>
+					</div>
+					<div class="content">
+						<div class="point"></div>
+						<div class="text">
+							<p></p>
+						</div>
+					</div>
+					<div class="input">
+						<textarea name="" rows="" cols="64"></textarea>
+					</div>
+				</div>
+			    <!--手机内容面板-->
+			    <div id="phone_content" class="opera-content-phone-middle">
+					<div class="header"></div>
+					<div id="phone-text-show-content" class="middle">
+						<div class="text-content">
+						</div>
+					</div>
+					<div class="footer"></div>
+				</div>
+				<!--手机评论-->
+				<div class="phone-comment-submit">
+					<div class="header" ontouchend="toggle_comments();">
+						<span class="close"></span>
+						<span>评论</span>
+					</div>
+					<ul></ul>
+					<div class="submit">
+						<input type="" name="" id="" value="" />
+						<button type="button" ontouchend="comment_submit(this,event);">提交</button>
+					</div>
+				</div>
+				<!--手机反馈-->
+				<div class="phone-feedback-submit">
+					<div class="header" ontouchend="toggle_feedback();">
+						<span class="close"></span>
+						<span>反馈</span>
+					</div>
+					<div class="content">
+						<p>精灵用户倾听您的建议,如果您在使用产品时遇到问题和功能障碍,或者产品相关意见建议,欢迎反馈!</p>
+						<textarea></textarea>
+					</div>
+					<div class="submit">
+						<button type="button" ontouchend="feedback_submit(this,event);">提交</button>
+					</div>
+				</div>
+				<!--手机搜索-->
+				<div id="ph_search_panel" class="phone-search">
+					<div class="header" >
+						<span class="close" ontouchend="toggle_search();"></span>
+						<div id="" class="search-box">
+							<span class="icon"></span>
+							<input type="text" class="input" placeholder="请输入搜索关键字"/>
+							<button type="button" class="button" ontouchend="search_submit(this,event);">搜索</button>
+						</div>
+					</div>
+					<ul onclick = "search_goto(event);"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="mask">
+			<div class="img"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../www-gli/misc.js" ></script>
+	<script type="text/javascript" src="Utils.js" ></script>
+	<script type="text/javascript" src="Network.js" ></script>
+	<script type="text/javascript" src="Dom.js" ></script>
+	<script type="text/javascript" src="Filter.js" ></script>
+	<script type="text/javascript" src="Event.js" ></script>
+	<script type="text/javascript" src="API.js" ></script>
+	<script type="text/javascript" src="Range.js" ></script>
+	<script type="text/javascript" src="fn.js"></script>
+	
+	<script type="text/javascript" src="Config.js" ></script>
+	<!--<script type="text/javascript" src="Note.js" ></script>-->
+	<!--<script type="text/javascript" src="Bookmark.js" ></script>-->
+	<!--<script type="text/javascript" src="Comment.js" ></script>-->.
+	<!--<link rel="stylesheet" href="css/ContentMenu.css" />-->
+	<!--<script type="text/javascript" src="ContentMenu.js" ></script>-->
+	<link rel="stylesheet" href="css/ImgPreview.css" />
+	<script type="text/javascript" src="ImgPreview.js" ></script>
+	<script type="text/javascript" src="reader.js" ></script>
+</html>

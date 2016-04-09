@@ -1,0 +1,49 @@
+.contentmenu {
+  border: 1px solid;
+  display: none;
+  position: absolute;
+  top: 300px;
+  left: 200px;
+  background-color: #f9ead0;
+  border-radius: 3px;
+}
+.contentmenu > .item {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  border-right: 1px solid #CCCCCC;
+  border-radius: 3px;
+}
+.contentmenu > .item:last-child {
+  border-right: 0px solid #CCCCCC;
+}
+.note-mark {
+  position: relative;
+  border-bottom: 1px solid #9B410E;
+}
+.note-mark .circle {
+  position: absolute;
+  cursor: pointer;
+  bottom: -9px;
+  right: -18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  background-image: url(../image/circle.png);
+  background-size: contain;
+}
+.reader-vertical-rl .note-mark {
+  border-bottom: 0;
+  border-left: 1px solid #9B410E;
+}
+.reader-vertical-rl .note-mark .circle {
+  bottom: -12px;
+  right: inherit;
+  left: -17px;
+}
+/*# sourceMappingURL=ContentMenu.css.map */

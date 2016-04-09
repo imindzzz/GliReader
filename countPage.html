@@ -1,0 +1,81 @@
+<!--
+	@author 符川
+	2016-02
+	此页通过iframe 加载,实现分页相关的页面
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">-->
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<title></title>
+		<link rel="stylesheet" href="css/reader.css" />
+		<script type="text/javascript" src="Dom.js" ></script>
+		<style type="text/css">
+			#page_phone,#page_pc{
+				background-color: red;
+			}
+			#content{
+				/*float: left;*/
+				/*height: 627px;*/
+				/*width: 375px;*/
+				/*border: 1px solid #0000FF;*/
+				margin: 5px;
+			}
+			#preview{
+				width: 100%;
+			}
+			#preview > .page {
+				/*height: 627px;
+				width: 375px;*/
+				float: left;
+				/*border: 1px solid #FF0000;*/
+				font-size: 22px;
+    			line-height: 33px;
+    			word-break: break-all;
+				margin: 5px;
+				background-color: #F4F4F4;
+			}
+		</style>
+		<style type="text/css">
+			*{
+				/*font-size: 20px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 阅读器结构 -->
+		<div class="reader-panel-content">
+			<div class="reader-is-pc">
+				<div class="position-panel">
+					<div class="reader-shadow">
+						<div class="reader-show-content-page">
+							<div class="content-middle-page content-middle-page-left"> 
+								<div class="pc-text-show-content">
+									<div class="middle-page-middle ">
+										<div class="page-middle-content-each page-left-middle-content" id="page_pc">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="reader-is-phone">
+				<div class="opera-content-phone-middle">
+					<div  id ="phone-text-show-content" class="middle">
+						<div class="text-content" id="page_phone">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 预览 -->
+		<div id="preview"></div>
+	</body>
+	<script type="text/javascript" src="Utils.js"></script>
+	<script type="text/javascript" src="countPage.js"></script>
+</html>
