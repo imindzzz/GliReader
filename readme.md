@@ -19,6 +19,6 @@
 4. 入口方式：
     4.1 直接访问 reader.html;
     4.2 在 本页面 中使用 <iframe> 简介访问reader.html;
-//all.
 
+<br/>[在线演示](http://xd199153.github.com/GliReader/reader.html?id=40816 "http://xd199153.github.com/GliReader/reader.html?id=40816")<br> 
 
